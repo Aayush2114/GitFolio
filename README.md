@@ -115,11 +115,33 @@ Explore repositories across topics like:
 
 # 📸 Project Preview
 
-<div align="center">
+## 🏠 Homepage
+![Homepage](./overview/preview-home.png)
 
-> Add screenshots here after deployment for an even more professional README.
+---
 
-</div>
+## 🔍 GitHub Search
+![Search](./overview/preview-search.png)
+
+---
+
+## 📚 Topic Discovery
+![Topics](./overview/preview-topics.png)
+
+---
+
+## 📈 Trending Repositories
+![Trending](./overview/preview-trending.png)
+
+---
+
+## 👨‍💻 About Developers
+![About](./overview/preview-about.png)
+
+---
+
+## 🎓 Mentor Section
+![Mentor](./overview/preview-mentor.png)
 
 ---
 
