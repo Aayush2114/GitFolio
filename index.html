@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GitFolio — A modern GitHub Explorer for searching developers, discovering trending repositories, and exploring topics.">
+    <title>GitFolio | GitHub Explorer & Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-brand" aria-label="GitFolio Home">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                <span>GitFolio</span>
+            </a>
+
+            <div class="nav-links" id="nav-links">
+                <a href="#search-section" class="nav-link">Search</a>
+                <a href="#topics-section" class="nav-link">Topics</a>
+                <a href="#trending-section" class="nav-link">Trending</a>
+                <a href="#about-section" class="nav-link">About</a>
+                <a href="#mentor-section" class="nav-link">Mentor</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle light/dark theme">
+                    <!-- Moon icon (shown in dark mode) -->
+                    <svg id="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <svg id="menu-open-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg id="menu-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <header class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <span class="badge-dot" aria-hidden="true"></span>
+                Powered by GitHub API · Live Data
+            </div>
+            <h1 class="hero-title">
+                Explore the World of<br>
+                <span class="hero-highlight">Open Source</span>
+            </h1>
+            <p class="hero-subtitle">
+                Search GitHub profiles, discover trending repositories, and explore
+                thousands of projects across every programming topic.
+            </p>
+            <div class="hero-actions">
+                <a href="#search-section" class="btn btn-primary" id="hero-cta-search">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Search Developers
+                </a>
+                <a href="#trending-section" class="btn btn-secondary" id="hero-cta-trending">
+                    View Trending
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+
+            <div class="hero-stats" role="list">
+                <div class="hero-stat" role="listitem">
+                    <span class="hero-stat-value" id="stat-devs">100M+</span>
+                    <span class="hero-stat-label">Developers</span>
+                </div>
+                <div class="hero-stat-divider" aria-hidden="true"></div>
+                <div class="hero-stat" role="listitem">
+                    <span class="hero-stat-value" id="stat-repos">330M+</span>
+                    <span class="hero-stat-label">Repositories</span>
+                </div>
+                <div class="hero-stat-divider" aria-hidden="true"></div>
+                <div class="hero-stat" role="listitem">
+                    <span class="hero-stat-value">Real-time</span>
+                    <span class="hero-stat-label">Live API Data</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== SEARCH SECTION ========== -->
+    <section id="search-section" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Developer Search</p>
+                <h2>Find Any GitHub User</h2>
+                <p class="section-desc">Enter a GitHub username to explore their profile, repositories, stars, and languages.</p>
+            </div>
+
+            <form id="search-form" class="search-form reveal" novalidate>
+                <div class="search-input-group">
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input
+                        type="text"
+                        id="username-input"
+                        placeholder="e.g. torvalds, gaearon, tj"
+                        autocomplete="off"
+                        spellcheck="false"
+                        aria-label="GitHub username"
+                    >
+                    <button type="submit" class="btn btn-primary" id="search-btn">
+                        <span id="search-btn-text">Search</span>
+                        <div id="search-btn-spinner" class="btn-spinner hidden" aria-hidden="true"></div>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading -->
+            <div id="search-loading" class="state-block hidden" role="status" aria-live="polite">
+                <div class="skeleton-profile">
+                    <div class="skeleton skeleton-avatar"></div>
+                    <div class="skeleton-lines">
+                        <div class="skeleton skeleton-line w-40"></div>
+                        <div class="skeleton skeleton-line w-60"></div>
+                        <div class="skeleton skeleton-line w-80"></div>
+                        <div class="skeleton skeleton-line w-50"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error -->
+            <div id="search-error" class="error-state hidden" role="alert">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span id="search-error-msg">User not found.</span>
+            </div>
+
+            <!-- Result -->
+            <div id="search-result-container" class="hidden">
+                <div id="user-profile" class="user-profile-card"></div>
+                <div class="user-repos-section">
+                    <h3 class="sub-heading">Top Repositories</h3>
+                    <div id="user-repos-grid" class="repos-grid"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TOPICS SECTION ========== -->
+    <section id="topics-section" class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Browse Topics</p>
+                <h2>Explore by Category</h2>
+                <p class="section-desc">Discover the most popular repositories across development topics.</p>
+            </div>
+
+            <div class="topics-pills reveal" id="topics-pills" role="group" aria-label="Topic filters">
+                <button class="topic-pill active" data-topic="machine-learning">Machine Learning</button>
+                <button class="topic-pill" data-topic="python">Python</button>
+                <button class="topic-pill" data-topic="javascript">JavaScript</button>
+                <button class="topic-pill" data-topic="ai">AI</button>
+                <button class="topic-pill" data-topic="react">React</button>
+                <button class="topic-pill" data-topic="web-development">Web Dev</button>
+                <button class="topic-pill" data-topic="data-science">Data Science</button>
+                <button class="topic-pill" data-topic="cybersecurity">Cybersecurity</button>
+                <button class="topic-pill" data-topic="open-source">Open Source</button>
+            </div>
+
+            <div id="topics-loading" class="skeleton-grid hidden" aria-hidden="true">
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+            </div>
+
+            <div id="topics-grid" class="repos-grid" role="list" aria-live="polite" aria-label="Topic repositories"></div>
+        </div>
+    </section>
+
+    <!-- ========== TRENDING SECTION ========== -->
+    <section id="trending-section" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">What's Hot</p>
+                <h2>Trending Repositories</h2>
+                <p class="section-desc">The most starred repositories on GitHub from the past 30 days.</p>
+            </div>
+
+            <div id="trending-loading" class="skeleton-grid" aria-hidden="true">
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+            </div>
+
+            <div id="trending-grid" class="repos-grid" role="list" aria-label="Trending repositories"></div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about-section" class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">The Team</p>
+                <h2>About the Developers</h2>
+                <p class="section-desc">The minds behind GitFolio — built as a final year project.</p>
+            </div>
+
+            <div class="people-grid reveal">
+                <!-- Developer 1 -->
+                <article class="person-card" id="dev-aayush">
+                    <div class="person-photo-wrap">
+                        <img
+                            src="./Aayush.jpg"
+                            alt="Aayush Sirswal"
+                            class="person-photo"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="person-body">
+                        <div class="person-header">
+                            <h3 class="person-name">Aayush Sirswal</h3>
+                            <span class="person-id-badge">2511981006</span>
+                        </div>
+                        <p class="person-role">Frontend Developer</p>
+                        <p class="person-desc">
+                            Passionate about building scalable frontend applications, clean UI architecture, and modern web experiences.
+                        </p>
+                        <div class="person-socials">
+                            <a href="https://github.com/Aayush2114" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Aayush GitHub">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/aayush-sirswal-56920637b/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Aayush LinkedIn">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                LinkedIn
+                            </a>
+                            <a href="https://mail.google.com/mail/?view=cm&to=ayushsirswal10@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Aayush Email">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                Gmail
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Developer 2 -->
+                <article class="person-card" id="dev-aman">
+                    <div class="person-photo-wrap">
+                        <img
+                            src="./Aman.jpeg"
+                            alt="Aman Sharma"
+                            class="person-photo"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="person-body">
+                        <div class="person-header">
+                            <h3 class="person-name">Aman Sharma</h3>
+                            <span class="person-id-badge">2511981021</span>
+                        </div>
+                        <p class="person-role">UI/UX Engineer</p>
+                        <p class="person-desc">
+                            Dedicated to creating elegant, user-centric designs, optimizing web performance, and crafting intuitive interfaces.
+                        </p>
+                        <div class="person-socials">
+                            <a href="https://github.com/amansh108" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Aman GitHub">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/aman-sharma-10643637b/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Aman LinkedIn">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                LinkedIn
+                            </a>
+                            <a href="https://mail.google.com/mail/?view=cm&to=amanmamtasharma619@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Aman Email">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                Gmail
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MENTOR SECTION ========== -->
+    <section id="mentor-section" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Our Guide</p>
+                <h2>Project Mentor</h2>
+                <p class="section-desc">Guided and reviewed by an industry expert throughout the development process.</p>
+            </div>
+
+            <div class="mentor-wrapper reveal">
+                <article class="mentor-card" id="mentor-abhishek">
+                    <div class="mentor-photo-wrap">
+                        <img
+                            src="./Abhi.png"
+                            alt="Dr Abhishek Thakur"
+                            class="mentor-photo"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="mentor-body">
+                        <div class="mentor-badge-row">
+                            <span class="mentor-badge">Project Mentor</span>
+                        </div>
+                        <h3 class="mentor-name">Dr Abhishek Thakur</h3>
+                        <p class="mentor-title">Assistant Professor &amp; Technical Guide</p>
+                        <blockquote class="mentor-quote">
+                            "Providing invaluable guidance, structured feedback, and technical mentorship throughout the entire project lifecycle — from concept to deployment."
+                        </blockquote>
+                        <div class="mentor-socials">
+                            <a href="https://www.linkedin.com/in/dr-abhishek-thakur-00123321/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Dr Abhishek LinkedIn">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                LinkedIn
+                            </a>
+                            <a href="https://www.youtube.com/@atschooldotin" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Dr Abhishek YouTube">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.16 1 12 1 12s0 3.84.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.84 23 12 23 12s0-3.84-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                                YouTube
+                            </a>
+                            <a href="https://github.com/abhithakur25" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Dr Abhishek GitHub">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                GitHub
+                            </a>
+                            <a href="https://mail.google.com/mail/?view=cm&to=abhishek@chitkarauniversity.edu.in" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Dr Abhishek Email">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                Gmail
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                        <path d="M9 18c-4.51 2-5-2-7-2"/>
+                    </svg>
+                    <span class="footer-brand-name">GitFolio</span>
+                </div>
+                <p class="footer-copy">Built with the GitHub REST API &mdash; Aayush &amp; Aman</p>
+                <p class="footer-note">Designed for Developers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" role="region" aria-live="polite" aria-label="Notifications"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
